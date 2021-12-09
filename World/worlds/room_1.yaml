@@ -1,0 +1,17 @@
+least_moves_count : 7
+empty_map :
+  WWEWW
+  WW...
+  .....
+  .....
+  .....
+objects:
+  - name : monster
+    pos : [3,2]
+
+  - name : item
+    type : sword
+    pos : [5,3]
+
+  - name : player
+    pos : [3,5]

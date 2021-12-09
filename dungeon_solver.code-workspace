@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": ".",
+		}
+	],
+	"settings": {
+		"python.analysis.extraPaths": ["World"],
+		"python.analysis.diagnosticSeverityOverrides": {
+			"reportUnusedImport": "information",
+			"reportMissingImports": "none"
+		}
+	}
+	//"python.autoComplete.extraPaths": ["World\\general_complex.py"]
+	
+}

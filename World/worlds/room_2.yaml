@@ -1,0 +1,20 @@
+least_moves_count : 7
+empty_map : 
+  WWWWWWWWW
+  W.......W
+  E.......W
+  W.......W
+  WWWWWWWWW
+objects:
+  - name : monster
+    pos : [4,2]
+  
+  - name : player
+    pos : [8,2]
+  
+  - name : monster
+    pos : [5,4]
+  
+  - name : item
+    type : sword
+    pos : [8,4]

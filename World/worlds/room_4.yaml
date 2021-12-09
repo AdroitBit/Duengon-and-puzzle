@@ -1,0 +1,12 @@
+least_moves_count : 16
+empty_map : 
+  .....W
+  IT...W
+  ...W.W
+  Tm...W
+  .....W
+  P.o..E
+objects:
+  - name : item
+    type : sword
+    pos : [1,2]
