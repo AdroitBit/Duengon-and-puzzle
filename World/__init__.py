@@ -47,6 +47,7 @@ class World:
         data=yaml.safe_load(open(cur_dir+f"/worlds/room_{lvl}.yaml"))
         if not strict:
             data['least_moves_count']=99999
+        data.setdefault('objects',[])
         return World(
             data['empty_map'],
             data['objects'],

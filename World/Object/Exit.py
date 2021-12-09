@@ -1,4 +1,3 @@
-from posixpath import islink
 from .__init__helper import *
 
 
