@@ -9,6 +9,15 @@
 		"python.analysis.diagnosticSeverityOverrides": {
 			"reportUnusedImport": "information",
 			"reportMissingImports": "none"
+		},
+		"files.exclude":{
+			"**/__pycache__":true,
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true
 		}
 	}
 	//"python.autoComplete.extraPaths": ["World\\general_complex.py"]

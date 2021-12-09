@@ -12,8 +12,6 @@ class Exit(CommonObject):
         self.pushable=False
         self.pickable=False
         self.keeper=data['world']
-        
-
 
     @property
     def display_prefix(self):
@@ -25,3 +23,8 @@ class Exit(CommonObject):
             return True
         else:
             return False
+    def is_not_steppable(self):
+        return not self.is_steppable()
+    @property
+    def pos(self):
+        return self.taken_positions[0]

@@ -6,3 +6,4 @@ from .Monster import *
 from .Item import *
 from .Trap import *
 from .Obstacle import *
+from .Chair import *

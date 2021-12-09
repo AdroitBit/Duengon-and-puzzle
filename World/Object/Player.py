@@ -2,6 +2,8 @@ from .__init__helper import *
 #clear warning from pylance
 from .Exit import *
 from .Trap import *
+from .Chair import *
+from .Monster import *
 
 class Player(CommonObject):
     def __init__(self,data,move_limit=999):
@@ -10,7 +12,7 @@ class Player(CommonObject):
         data.setdefault('pos',[None,None])
         self.taken_positions=np.array([data['pos']])
         self.move_count=0
-        self.move_limit=move_limit
+        self.move_limit=data['least_moves_count']
         self.dead=False
         self.world=data['world']
         self.inventories=[]
@@ -74,16 +76,23 @@ class Player(CommonObject):
                     self.dead=True
                 elif o.is_pickable():
                     self.pick(o)
+                elif isinstance(o,Chair):
+                    break
                 break
             else:
                 self.pos=self.pos+direction_2_vector(d)
                 
-        if np.all(self.pos!=p0):
+        if np.any(self.pos!=p0):
             self.move_count+=1
     def use_sword(self,d):
         p=self.pos+direction_2_vector(d)
         world=self.world
         
         o=self.object_at(d)
-        world.objects.remove(o)
-        o.keeper=None
+        if o is not None and isinstance(o,Monster):
+            world.objects.remove(o)
+            o.keeper=None
+        else:
+            raise SystemError(f"Nothing in the {d} direction")
+
+        self.move_count+=1

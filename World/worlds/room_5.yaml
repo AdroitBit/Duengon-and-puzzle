@@ -3,8 +3,12 @@ empty_map :
   WWWW.c...
   WWWW.c..m
   WWWW.....
-  P...cTo..
-  .....TW..
+  ....cTo..
+  .P...TW..
   WWWWooW.S
   WWWWWWo..
   WWWWWWWEW
+objects:
+  - name : item
+    type : sword
+    pos : [9,6]

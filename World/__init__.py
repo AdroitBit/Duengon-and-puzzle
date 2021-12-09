@@ -17,7 +17,7 @@ class World:
         for y,xs in enumerate(empty_map):
             for x,o in enumerate(xs):
                 #o=o.upper()
-                data={'pos':[x,y],'world':world}
+                data={'pos':[x,y],'world':world,'least_moves_count':move_limit}
                 if o=='W':
                     world.objects.append(Wall(data))
                 if o=='E':
@@ -32,6 +32,8 @@ class World:
                 if o=='m':#only 1x1 monster
                     data['shape']=[1,1]
                     world.objects.append(Monster(data))
+                if o=='c':#only 1x1 monster
+                    world.objects.append(Chair(data))
         #add the objects
         for data in objects:
             name=data['name'].lower()
@@ -113,8 +115,10 @@ class World:
                 return o
     @property
     def monsters_left(self):
-        r=[]
+        return [o for o in self.objects if isinstance(o,Monster)]
+
+    @property
+    def exit(self):
         for o in self.objects:
-            if isinstance(o,Monster):
-                r.append(o)
-        return o
+            if isinstance(o,Exit):
+                return o
