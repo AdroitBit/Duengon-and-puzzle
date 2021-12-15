@@ -1,25 +1,15 @@
 from World import *
-world=World.load_level(5,strict=True)
+world=World.load_level(6,strict=True)
 
 player=world.player
-player.walk(Direction.up)
-player.walk(Direction.right)
-player.walk(Direction.up)
-player.walk(Direction.right)
-player.walk(Direction.down)
-player.walk(Direction.right)
-player.walk(Direction.down)
-player.walk(Direction.right)
-player.walk(Direction.up)
-player.walk(Direction.up)
-player.use_sword(Direction.up)
-player.walk(Direction.down)
 player.walk(Direction.left)
-player.walk(Direction.down)
+player.walk(Direction.up)
 world.preview()
 
-#print(world.monsters_left)
-#print(world.exit.pos)
-print('steppable exit :',world.exit.is_steppable())
-#print(player.move_limit,player.move_count)
-#print(player.object_at(Direction.down))
+
+print(player.pos)
+for o in player.inventories:
+    print(o,o.pos)
+
+#print('steppable exit :',world.exit.is_steppable())
+#print(player.inventories)

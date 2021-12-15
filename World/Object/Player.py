@@ -57,9 +57,16 @@ class Player(CommonObject):
             return o
     def pick(self,o):
         world=o.holder
+        o.get_picked_up(by=self)
         o.holder=self
         self.inventories.append(o)
         world.objects.remove(o)
+    def pick_at(self,x,y):
+        world=self.world
+        objects=world.objects_at(x,y)
+        objects.remove(self)#exclude player
+        for o in objects:
+            o.get_picked_up(by=self)#already apply to inventory and stuff
     def walk(self,d):
         if self.is_dead():
             return
@@ -74,8 +81,8 @@ class Player(CommonObject):
                 self.pos=self.pos+direction_2_vector(d)
                 if isinstance(o,Trap):
                     self.dead=True
-                elif o.is_pickable():
-                    self.pick(o)
+                elif o.is_pickable():#damn we have to be able to pick multiple item there.
+                    self.pick_at(*o.pos)
                 elif isinstance(o,Chair):
                     break
                 break
@@ -96,3 +103,22 @@ class Player(CommonObject):
             raise SystemError(f"Nothing in the {d} direction")
 
         self.move_count+=1
+    def have_bow(self):
+        for item in self.inventories:
+            if item.type=='bow':
+                return True
+        return False
+    def have_arrow(self):
+        for item in self.inventories:
+            if item.type=='arrow':
+                return True
+        return False
+    def use_bow(self,d):
+        if not self.have_bow():
+            raise SystemError("Player doesn't have bow")
+        if not self.have_arrow():
+            raise SystemError("Player doesn't have arrow")
+        
+
+    def __repr__(self):
+        return 'player'

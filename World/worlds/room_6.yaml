@@ -1,0 +1,11 @@
+least_moves_count : 4
+empty_map :
+  ..WWWWWWW
+  B.P..m..E
+objects:
+  - name : item
+    type : bow
+    pos : [1,2]
+  - name : item
+    type : arrow
+    pos : [1,2]
