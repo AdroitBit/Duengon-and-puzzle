@@ -25,7 +25,7 @@ class Item(CommonObject):
         return f'{self.type}'
 
     def get_picked_up(self,by):
-        picker=by
+        picker=byasdasd
         picker.inventories.append(self)
         self.holder=picker
     @property
